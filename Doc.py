@@ -19,7 +19,7 @@ class Doc:
         self.number = number
 
     def isLong(self):
-        maxSymbols = [38, 19, 51]
+        maxSymbols = [38, 20, 51]
         currentSymbols = [len(self.voter), len(self.target),
                           len(self.reason) + len(self.initiator) + (self.initiator != '')]
         for i in range(len(maxSymbols)):
@@ -69,37 +69,38 @@ class DocGroup:
         else:
             return
         cell.paragraphs[0].runs[0].font.size = Pt(10)
+        cell.paragraphs[0].runs[0].font.name = 'Times New Roman'
 
     def saveTemplate(self, name):
         d = Document("data/baseDoc.docx")
         second = False
-        deletedParagraphs = []
         for i in range(len(self.docs) - 1):
             second = not second
             newPage = False
             p = d.paragraphs[-1]
-            if self.docs[i].isLong() or self.docs[i + 1].isLong():
+            if self.docs[i].isLong() or self.docs[i + 1].isLong() and second:
                 d.add_page_break()
                 second = False
                 newPage = True
-            if second or newPage:
+            if second and not newPage:
                 r = p.add_run("-" * 100)
                 r.font.size = Pt(14)
                 r.font.color.rgb = RGBColor(200, 200, 200)
             p = d.paragraphs[-1]
             p._p.addnext(deepcopy(d.tables[0]._tbl))
-            d.add_paragraph()
-        for i in range(len(d.paragraphs)):
-            print(i, len(d.paragraphs[i].runs))
+            if not second or newPage:
+                d.add_paragraph()
         d.save(name)
 
 
 dg = DocGroup()
 # date, voter, target, number, reason, initiator
-dg.addDoc(Doc("14 июля 2025 года", "Иванов Иван Иванович", "Петров Пётр Петрович", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+dg.addDoc(Doc("14 июля 2025 года", "Иванов Иван Иванович", "Петров Пётр Петрович ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
 dg.addDoc(Doc("14 июля 2025 года", "Максимов Максим Максимович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Ольгина Ольга Олеговна", "Петров Пётр Петрович", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+dg.addDoc(Doc("14 июля 2025 года", "Ольгина Ольга Олеговна", "Петров Пётр Петрович ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
 dg.addDoc(Doc("14 июля 2025 года", "Михайлов Михаил Михайлович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
 dg.addDoc(Doc("14 июля 2025 года", "Никитин Никита Никитович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
 dg.addDoc(Doc("14 июля 2025 года", "Егоров Егор Егорович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+dg.addDoc(Doc("14 июля 2025 года", "Сергеев Сергей Сергеевич", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+dg.addDoc(Doc("14 июля 2025 года", "Ильин Илья Ильич", "Петров Пётр Петрович  ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
 dg.save("Good_formatting.docx")
