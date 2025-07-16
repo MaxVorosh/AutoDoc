@@ -93,29 +93,29 @@ class DocGroup:
         d.save(name)
 
 
-dg = DocGroup()
-# date, voter, target, number, reason, initiator
-dg.addDoc(Doc("14 июля 2025 года", "Иванов Иван Иванович", "Петров Пётр Петрович ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Максимов Максим Максимович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Ольгина Ольга Олеговна", "Петров Пётр Петрович ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Михайлов Михаил Михайлович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Никитин Никита Никитович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Егоров Егор Егорович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Сергеев Сергей Сергеевич", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.addDoc(Doc("14 июля 2025 года", "Ильин Илья Ильич", "Петров Пётр Петрович  ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
-dg.save("Examle.docx")
-testdg = DocGroup()
-date = "14 июля 2025 года"
-voter = "Example voter"
-small_target = "Target"
-long_target = "Target with very long name that cannot be placed in one row"
-number = "78/1234"
-reason = "представление вице-президента Адвокатской палаты Санкт-Петербурга"
-initiator = "Initiator"
-for small_number in range(6):
-    for long_number in range(6):
-        for i in range(small_number):
-            testdg.addDoc(Doc(date, voter, small_target, number, reason, initiator))
-        for i in range(long_number):
-            testdg.addDoc(Doc(date, voter, long_target, number, reason, initiator))
-testdg.save("Test")
+# dg = DocGroup()
+# # date, voter, target, number, reason, initiator
+# dg.addDoc(Doc("14 июля 2025 года", "Иванов Иван Иванович", "Петров Пётр Петрович ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Максимов Максим Максимович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Ольгина Ольга Олеговна", "Петров Пётр Петрович ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Михайлов Михаил Михайлович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Никитин Никита Никитович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Егоров Егор Егорович", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Сергеев Сергей Сергеевич", "Петров П. П.", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.addDoc(Doc("14 июля 2025 года", "Ильин Илья Ильич", "Петров Пётр Петрович  ", "78/1234", "Жалоба", "Васильев Василий Васильевич"))
+# dg.save("Examle.docx")
+# testdg = DocGroup()
+# date = "14 июля 2025 года"
+# voter = "Example voter"
+# small_target = "Target"
+# long_target = "Target with very long name that cannot be placed in one row"
+# number = "78/1234"
+# reason = "представление вице-президента Адвокатской палаты Санкт-Петербурга"
+# initiator = "Initiator"
+# for small_number in range(6):
+#     for long_number in range(6):
+#         for i in range(small_number):
+#             testdg.addDoc(Doc(date, voter, small_target, number, reason, initiator))
+#         for i in range(long_number):
+#             testdg.addDoc(Doc(date, voter, long_target, number, reason, initiator))
+# testdg.save("Test")
