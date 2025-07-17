@@ -194,7 +194,7 @@ class DocumentSettings(QWidget):
             return
         if initiator is None:
             initiator = ""
-        newRecord = "-".join([target, number, reason, initiator])
+        newRecord = "--".join([target, number, reason, initiator])
         currentRecords = self.docs.toPlainText()
         currentRecords += newRecord + "\n"
         self.docs.setText(currentRecords)
@@ -226,7 +226,7 @@ class DocumentSettings(QWidget):
                 return
             for i in range(len(records)):
                 record = records[i]
-                parts = record.split("-")
+                parts = record.split("--")
                 if len(parts) != 4:
                     self.ew = ErrorWindow(f"Неверный формат в строке {i + 1}.\nУдалите строку и добавьте данные заново")
                     self.ew.show()
