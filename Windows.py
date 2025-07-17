@@ -233,7 +233,7 @@ class DocumentSettings(QWidget):
                     return
                 target, number, reason, initiator = parts
                 if reason in self.nonPersonReasons and initiator != "":
-                    self.ew = ErrorWindow("Данная причина не требует ФИО. Следуйте инструкциям в верхней части окна")
+                    self.ew = ErrorWindow("Данная причина не требует ФИО.\nСледуйте инструкциям в\n верхней части окна")
                     self.ew.show()
                     return
                 for voter in self.comissionNames:
