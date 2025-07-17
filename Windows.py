@@ -134,6 +134,7 @@ class DocumentSettings(QWidget):
                               "представление вице-президента Адвокатской палаты Санкт-Петербурга",
                               "представление ГУ МЮ по СПб и ЛО", "обращение судьи"])
         self.reason.setGeometry(20, 100, 260, widgetY)
+        self.reason.currentTextChanged.connect(self.reasonChanged)
 
         self.initiator = QTextEdit(self)
         self.initiator.setPlaceholderText("ФИО")
@@ -163,6 +164,14 @@ class DocumentSettings(QWidget):
         self.backBtn.setText("Назад")
         self.backBtn.setGeometry(90, 430, widgetX, widgetY)
         self.backBtn.clicked.connect(self.back)
+
+    def reasonChanged(self, text):
+        if text in self.nonPersonReasons:
+            self.initiator.hide()
+            self.addBtn.setGeometry(90, 140, 120, 30)
+        else:
+            self.initiator.show()
+            self.addBtn.setGeometry(210, 140, 70, 30)
 
     def addDoc(self):
         target = self.targetName.toPlainText()
