@@ -128,12 +128,12 @@ class DocumentSettings(QWidget):
         self.number.setPlaceholderText("Номер")
         self.number.setGeometry(210, 60, smallX, widgetY)
 
-        self.nonPersonReasons = ["представление вице-президента Адвокатской палаты Санкт-Петербурга",
-                                 "представление ГУ МЮ по СПб и ЛО"]
+        self.nonPersonReasons = ["представлению вице-президента Адвокатской палаты Санкт-Петербурга",
+                                 "представлению ГУ МЮ по СПб и ЛО"]
         self.reason = QComboBox(self)
-        self.reason.addItems(["жалоба", "жалоба адвоката",
-                              "представление вице-президента Адвокатской палаты Санкт-Петербурга",
-                              "представление ГУ МЮ по СПб и ЛО", "обращение судьи"])
+        self.reason.addItems(["жалобе", "жалобе адвоката",
+                              "представлению вице-президента Адвокатской палаты Санкт-Петербурга",
+                              "представлению ГУ МЮ по СПб и ЛО", "обращению судьи"])
         self.reason.setGeometry(20, 100, 260, widgetY)
         self.reason.currentTextChanged.connect(self.reasonChanged)
 
